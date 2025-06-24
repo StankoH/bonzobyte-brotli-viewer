@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'lib-brotli-viewer',
@@ -11,4 +11,4 @@ import { Component } from '@angular/core';
   `,
   styles: ``
 })
-export class BrotliViewerComponent {}
+export class BrotliViewerComponent {@Input() filePath!: string;}
