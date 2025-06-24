@@ -8,7 +8,10 @@
     "declarationMap": true,
     "inlineSources": true,
     "types": [],
-    "typeRoots": ["./node_modules/@types", "src"]
+    "typeRoots": [
+      "src",
+      "../../node_modules/@types"
+    ]
   },
   "exclude": [
     "**/*.spec.ts"
