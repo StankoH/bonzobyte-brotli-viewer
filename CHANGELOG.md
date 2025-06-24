@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/StankoH/bonzobyte-brotli-viewer/compare/v0.0.5...v0.0.6) (2025-06-24)
+
 ### [0.0.5](https://github.com/StankoH/bonzobyte-brotli-viewer/compare/v0.0.4...v0.0.5) (2025-06-24)
 
 ### [0.0.4](https://github.com/StankoH/bonzobyte-brotli-viewer/compare/v0.0.3...v0.0.4) (2025-06-24)
