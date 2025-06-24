@@ -5,12 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
     "release": "standard-version",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
-    "release:major": "standard-version --release-as major"
+    "release:major": "standard-version --release-as major",
+    "publish:lib": "npm run release:patch && ng build brotli-viewer && cd dist/brotli-viewer && npm publish --access public"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +36,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^19.2.0",
+    "standard-version": "^9.5.0",
     "typescript": "~5.7.2"
   }
 }
