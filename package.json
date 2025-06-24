@@ -1,6 +1,7 @@
 {
   "name": "bonzobyte-brotli-viewer",
   "version": "0.0.17",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,9 +10,8 @@
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
-    "publish:lib": "npm run release:patch && ng build brotli-viewer && cd dist/brotli-viewer && npm publish --access public"
+    "publish:lib": "ng build brotli-viewer && cd dist/brotli-viewer && npm publish --access public"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
