@@ -12,6 +12,9 @@
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major"
   },
+  "dependencies": {
+    "brotli-dec-wasm": "^1.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/StankoH/bonzobyte-brotli-viewer"
