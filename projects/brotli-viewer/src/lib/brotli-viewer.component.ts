@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'lib-brotli-viewer',
+  standalone: true,
   imports: [],
   template: `
     <p>
@@ -10,6 +11,4 @@ import { Component } from '@angular/core';
   `,
   styles: ``
 })
-export class BrotliViewerComponent {
-
-}
+export class BrotliViewerComponent {}
