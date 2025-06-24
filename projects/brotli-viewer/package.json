@@ -1,6 +1,6 @@
 {
   "name": "@bonzobyte/brotli-viewer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Angular component for Brotli-decompressed JSON viewing using WebAssembly.",
   "author": {
     "name": "Stanko Horvat",
