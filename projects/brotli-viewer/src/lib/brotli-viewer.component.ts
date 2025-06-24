@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   imports: [],
   template: `
     <p>
-      brotli-viewer works!
+      brotli-viewer works again!
     </p>
   `,
   styles: ``
