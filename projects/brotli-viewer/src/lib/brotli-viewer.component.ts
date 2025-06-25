@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { JsonPipe, NgIf } from '@angular/common';
-import initBrotli, { BrotliDecoder } from 'brotli-dec-wasm/browser';
+import initBrotli from 'brotli-dec-wasm';
 
 @Component({
   selector: 'lib-brotli-viewer',
@@ -23,10 +23,11 @@ export class BrotliViewerComponent implements OnInit {
       if (!response.ok) throw new Error(`Fetch error: ${response.statusText}`);
       const compressedBuffer = await response.arrayBuffer();
       const compressedBytes = new Uint8Array(compressedBuffer);
-  
-      // ✅ Dinamički import iz browser ulazne točke
-      const brotliModule = await import('brotli-dec-wasm/browser');
-      const brotli = await brotliModule.default(); // poziva init()
+      const arrayBuffer = await response.arrayBuffer();
+      const uint8Array = new Uint8Array(arrayBuffer);
+      const brotliModule = await import('brotli-dec-wasm');
+      const brotli = await initBrotli();
+      const decompressed = brotli.decompress(uint8Array);
       const decompressedBytes = brotli.decompress(compressedBytes);
   
       const decodedString = new TextDecoder('utf-8').decode(decompressedBytes);
