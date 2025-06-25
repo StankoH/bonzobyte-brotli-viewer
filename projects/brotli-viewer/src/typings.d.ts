@@ -3,3 +3,4 @@ declare module 'brotli-dec-wasm' {
       decompress(input: ArrayLike<number>): Uint8Array;
     }>;
   }
+  declare module 'brotli-dec-wasm/browser';
