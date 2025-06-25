@@ -1,6 +1,6 @@
 {
   "name": "bonzobyte-brotli-viewer",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "private": false,
   "scripts": {
     "ng": "ng",
