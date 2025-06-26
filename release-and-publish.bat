@@ -1,13 +1,22 @@
 @echo off
 setlocal
 
-:: Postavi radni direktorij na ovaj .bat file
+:: Postavi radni direktorij na ovaj .bat datoteku
 cd /d "%~dp0"
 
-echo 🧠 Releasing patch version...
+echo 🧠 Releasing patch version from projects/brotli-viewer...
+cd projects\brotli-viewer
 call npm run release:patch
 IF ERRORLEVEL 1 (
-    echo ❌ Failed during release.
+    echo ❌ Failed during version release.
+    exit /b 1
+)
+cd ../..
+
+echo 🏗️ Building Angular library...
+call ng build brotli-viewer
+IF ERRORLEVEL 1 (
+    echo ❌ Build failed.
     exit /b 1
 )
 
@@ -15,13 +24,6 @@ echo 🚀 Pushing tags to GitHub...
 call git push --follow-tags origin master
 IF ERRORLEVEL 1 (
     echo ❌ Failed to push tags.
-    exit /b 1
-)
-
-echo 🏗️ Building Angular library...
-call ng build brotli-viewer
-IF ERRORLEVEL 1 (
-    echo ❌ Build failed.
     exit /b 1
 )
 

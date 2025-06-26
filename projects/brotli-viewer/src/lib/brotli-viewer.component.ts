@@ -22,17 +22,15 @@ export class BrotliViewerComponent implements OnInit {
     try {
       const response = await fetch(this.filePath);
       if (!response.ok) throw new Error(`Fetch error: ${response.statusText}`);
-      const compressedBuffer = await response.arrayBuffer();
-      const compressedBytes = new Uint8Array(compressedBuffer);
-      const arrayBuffer = await response.arrayBuffer();
-      const uint8Array = new Uint8Array(arrayBuffer);
-      const brotliModule = await import('brotli-dec-wasm');
-      const brotli = await initBrotli();
-      const decompressed = brotli.decompress(uint8Array);
-      const decompressedBytes = brotli.decompress(compressedBytes);
   
-      const decodedString = new TextDecoder('utf-8').decode(decompressedBytes);
-      this.json = JSON.parse(decodedString);
+      const buffer = await response.arrayBuffer();
+      const uint8Array = new Uint8Array(buffer);
+  
+      const brotli = await initBrotli();
+      const decompressedBytes = brotli.decompress(uint8Array);
+  
+      const decoded = new TextDecoder('utf-8').decode(decompressedBytes);
+      this.json = JSON.parse(decoded);
     } catch (err: any) {
       this.error = err.message || 'Unknown error';
       console.error('BrotliViewerComponent error:', err);
