@@ -18,29 +18,26 @@ export class BrotliViewerComponent implements OnInit {
   error: string | null = null;
 
   async ngOnInit() {
-    if (!this.filePath) {
-      this.error = 'No filePath provided.';
-      return;
-    }
-
     try {
-      const response = await fetch(this.filePath);
-      if (!response.ok) throw new Error(`Failed to fetch .br file: ${response.status}`);
 
-      const compressedStream = response.body;
-      if (!compressedStream) throw new Error('No response body');
+      const response = await fetch('assets/530763.json.br');
 
-      if ('DecompressionStream' in window) {
-        const ds = new (window as any).DecompressionStream('br');
-        const decompressedStream = compressedStream.pipeThrough(ds);
-        const decompressedText = await new Response(decompressedStream).text();
-        this.json = JSON.parse(decompressedText);
-      } else {
-        this.error = '❌ DecompressionStream is not supported in this browser.';
+      if (!response.ok) throw new Error('❌ Fetch failed: ' + response.status);
+      
+      // Provjera podrške
+      if (!('DecompressionStream' in window)) {
+        throw new Error('❌ DecompressionStream not supported in this browser');
       }
+      
+      const ds = new (window as any).DecompressionStream('br');
+      const decompressedStream = response.body!.pipeThrough(ds);
+      const decompressedText = await new Response(decompressedStream).text();
+      
+      console.log(JSON.parse(decompressedText));
+
     } catch (err: any) {
-      console.error('🔥 Brotli dekompresija neuspješna:', err);
-      this.error = 'Brotli dekompresija neuspješna: ' + (err?.message || err);
+      console.error('🔥 Brotli decompression error:', err);
+      this.error = err.message || 'Decompression failed';
     }
   }
 }
