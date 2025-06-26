@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { JsonPipe, NgIf } from '@angular/common';
 import initBrotli from 'brotli-dec-wasm';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'lib-brotli-viewer',
   standalone: true,
-  imports: [NgIf, JsonPipe],
+  imports: [NgIf, JsonPipe, CommonModule],
   template: `
     <div *ngIf="error" style="color: red;">Error: {{ error }}</div>
     <div *ngIf="!json && !error">Loading...</div>
